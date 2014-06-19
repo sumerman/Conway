@@ -11,7 +11,7 @@
 
 @implementation CWAppDelegate
 
-@synthesize grid, gridView;
+@synthesize grid, gridView, updateInterval;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -19,8 +19,9 @@
     if (!grid) {
         grid = [CWGrid grid];
     }
+    self.updateInterval = [NSNumber numberWithInt:20];
+    _updTimer = nil;
     self.window.delegate = self;
-    gridView.gridProvider = self;
     [gridView setNeedsDisplay:YES];
 }
 
@@ -39,10 +40,17 @@
             NSApplicationPresentationAutoHideToolbar);
 }
 
+- (void)setUpdateInterval:(NSNumber *)anUpdateInterval {
+    self->updateInterval = anUpdateInterval;
+    if (_updTimer) {
+        [self start:self];
+    }
+}
+
 - (IBAction)start:(id)sender
 {
-    [_updTimer invalidate];
-    _updTimer = [NSTimer scheduledTimerWithTimeInterval: 0.5f
+    [self stop:sender];
+    _updTimer = [NSTimer scheduledTimerWithTimeInterval: self.updateInterval.floatValue / 100
                                                  target: self
                                                selector: @selector(timerFired:)
                                                userInfo: nil
@@ -52,6 +60,7 @@
 - (IBAction)stop:(id)sender
 {
     [_updTimer invalidate];
+    _updTimer = nil;
 }
 
 - (IBAction)clean:(id)sender {

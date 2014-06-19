@@ -210,6 +210,9 @@
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="K5O-TR-CDk" customClass="CWGridView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <connections>
+                            <outlet property="gridProvider" destination="Voe-Tx-rLC" id="pu9-uF-kCd"/>
+                        </connections>
                     </customView>
                 </subviews>
                 <constraints>
@@ -271,6 +274,19 @@
                             <action selector="clean:" target="Voe-Tx-rLC" id="vsr-wZ-s6P"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="97C1D37D-FDDB-4F5E-895E-58A49F048560" label="Speed" paletteLabel="Speed" id="Vq8-y6-775">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="96" height="21"/>
+                        <size key="maxSize" width="100" height="24"/>
+                        <slider key="view" verticalHuggingPriority="750" id="chI-8u-bjM">
+                            <rect key="frame" x="0.0" y="14" width="100" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <sliderCell key="cell" state="on" alignment="left" minValue="10" maxValue="100" doubleValue="20" tickMarkPosition="above" sliderType="linear" id="95E-Ec-mxl"/>
+                            <connections>
+                                <binding destination="Voe-Tx-rLC" name="value" keyPath="self.updateInterval" id="wQ5-62-mRM"/>
+                            </connections>
+                        </slider>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="kul-0g-Rf3"/>
@@ -278,6 +294,7 @@
                     <toolbarItem reference="S0y-mF-fck"/>
                     <toolbarItem reference="WSj-be-lGy"/>
                     <toolbarItem reference="hGh-w8-262"/>
+                    <toolbarItem reference="Vq8-y6-775"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>

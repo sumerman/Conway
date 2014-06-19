@@ -20,6 +20,7 @@
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet CWGridView *gridView;
+@property (assign, nonatomic) NSNumber *updateInterval;
 @property CWGrid *grid;
 
 - (IBAction)start:(id)sender;
