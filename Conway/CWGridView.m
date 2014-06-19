@@ -63,11 +63,11 @@
 
 - (void)scrollWheel:(NSEvent *)e
 {
-    CGFloat i1 = i0, j1 = j0;
-    i1 += truncf([e deltaX]);
-    j1 -= truncf([e deltaY]);
-    if (i1 >= [CWCoord min] && i1 < [CWCoord max]) i0 = i1;
-    if (j1 >= [CWCoord min] && j1 < [CWCoord max]) j0 = j1;
+    COORD_INT i1 = i0, j1 = j0;
+    i1 += (COORD_INT)truncf([e deltaX]);
+    j1 -= (COORD_INT)truncf([e deltaY]);
+    if (i1 >= [CWCoord min] / 2 && i1 < [CWCoord max] / 2) i0 = i1;
+    if (j1 >= [CWCoord min] / 2 && j1 < [CWCoord max] / 2) j0 = j1;
     
     [self setNeedsDisplay:YES];
 }
@@ -76,8 +76,8 @@
 {
     NSPoint p = [event locationInWindow];
     NSPoint downPoint = [self convertPoint:p fromView:nil];
-    COORD_INT i = truncf(downPoint.x / zoom) - i0;
-    COORD_INT j = truncf(downPoint.y / zoom) - j0;
+    COORD_INT i = (COORD_INT)truncf(downPoint.x / zoom) - i0;
+    COORD_INT j = (COORD_INT)truncf(downPoint.y / zoom) - j0;
     
     BOOL val = [[self.gridProvider grid] atI:i J:j];
     val = !val;

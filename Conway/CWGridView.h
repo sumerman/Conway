@@ -19,8 +19,8 @@
 @interface CWGridView : NSView
 
 @property (assign) IBOutlet id<CWGridViewProvider> gridProvider;
-@property (assign) CGFloat i0;
-@property (assign) CGFloat j0;
+@property (assign) COORD_INT i0;
+@property (assign) COORD_INT j0;
 @property (assign) CGFloat zoom;
 
 @end
