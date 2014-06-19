@@ -138,10 +138,15 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="View" id="HyV-fh-RgO">
                         <items>
-                            <menuItem title="Show Toolbar" keyEquivalent="t" id="snW-S8-Cw5">
+                            <menuItem title="Full Screen" keyEquivalent="f" id="snW-S8-Cw5">
+                                <connections>
+                                    <action selector="toggleFullScreen:" target="QvC-M9-y7g" id="CZH-tq-aVi"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show Toolbar" keyEquivalent="t" id="jTq-14-Kny">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 <connections>
-                                    <action selector="toggleToolbarShown:" target="-1" id="BXY-wc-z0C"/>
+                                    <action selector="toggleToolbarShown:" target="-1" id="Mkb-Rm-KAT"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">

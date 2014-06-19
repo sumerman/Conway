@@ -34,7 +34,7 @@
 - (NSApplicationPresentationOptions)window:(NSWindow *)window willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions
 {
     return (NSApplicationPresentationFullScreen |
-            NSApplicationPresentationHideDock |
+            NSApplicationPresentationAutoHideDock |
             NSApplicationPresentationAutoHideMenuBar |
             NSApplicationPresentationAutoHideToolbar);
 }
