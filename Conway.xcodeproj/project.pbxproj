@@ -14,21 +14,10 @@
 		C38E481F1951C5AA0039403B /* CWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C38E481E1951C5AA0039403B /* CWAppDelegate.m */; };
 		C38E48221951C5AA0039403B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C38E48201951C5AA0039403B /* MainMenu.xib */; };
 		C38E48241951C5AA0039403B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38E48231951C5AA0039403B /* Images.xcassets */; };
-		C38E482B1951C5AA0039403B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E482A1951C5AA0039403B /* XCTest.framework */; };
-		C38E482C1951C5AA0039403B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38E480B1951C5AA0039403B /* Cocoa.framework */; };
-		C38E48341951C5AA0039403B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C38E48321951C5AA0039403B /* InfoPlist.strings */; };
-		C38E48361951C5AA0039403B /* ConwayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C38E48351951C5AA0039403B /* ConwayTests.m */; };
+		C38E48411951C63C0039403B /* CWCoord.m in Sources */ = {isa = PBXBuildFile; fileRef = C38E48401951C63C0039403B /* CWCoord.m */; };
+		C38E48441951CA680039403B /* CWGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = C38E48431951CA680039403B /* CWGrid.m */; };
+		C38E484919521A660039403B /* CWGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = C38E484819521A660039403B /* CWGridView.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C38E482D1951C5AA0039403B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C38E48001951C5AA0039403B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C38E48071951C5AA0039403B;
-			remoteInfo = Conway;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C38E48081951C5AA0039403B /* Conway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Conway.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,11 +34,13 @@
 		C38E481E1951C5AA0039403B /* CWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWAppDelegate.m; sourceTree = "<group>"; };
 		C38E48211951C5AA0039403B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C38E48231951C5AA0039403B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C38E48291951C5AA0039403B /* ConwayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConwayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38E482A1951C5AA0039403B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C38E48311951C5AA0039403B /* ConwayTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConwayTests-Info.plist"; sourceTree = "<group>"; };
-		C38E48331951C5AA0039403B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C38E48351951C5AA0039403B /* ConwayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConwayTests.m; sourceTree = "<group>"; };
+		C38E483F1951C63C0039403B /* CWCoord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWCoord.h; sourceTree = "<group>"; };
+		C38E48401951C63C0039403B /* CWCoord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWCoord.m; sourceTree = "<group>"; };
+		C38E48421951CA680039403B /* CWGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWGrid.h; sourceTree = "<group>"; };
+		C38E48431951CA680039403B /* CWGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWGrid.m; sourceTree = "<group>"; };
+		C38E484719521A660039403B /* CWGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWGridView.h; sourceTree = "<group>"; };
+		C38E484819521A660039403B /* CWGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWGridView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,15 +52,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C38E48261951C5AA0039403B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C38E482C1951C5AA0039403B /* Cocoa.framework in Frameworks */,
-				C38E482B1951C5AA0039403B /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -77,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				C38E48111951C5AA0039403B /* Conway */,
-				C38E482F1951C5AA0039403B /* ConwayTests */,
 				C38E480A1951C5AA0039403B /* Frameworks */,
 				C38E48091951C5AA0039403B /* Products */,
 			);
@@ -87,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				C38E48081951C5AA0039403B /* Conway.app */,
-				C38E48291951C5AA0039403B /* ConwayTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,6 +95,12 @@
 		C38E48111951C5AA0039403B /* Conway */ = {
 			isa = PBXGroup;
 			children = (
+				C38E483F1951C63C0039403B /* CWCoord.h */,
+				C38E48401951C63C0039403B /* CWCoord.m */,
+				C38E48421951CA680039403B /* CWGrid.h */,
+				C38E48431951CA680039403B /* CWGrid.m */,
+				C38E484719521A660039403B /* CWGridView.h */,
+				C38E484819521A660039403B /* CWGridView.m */,
 				C38E481D1951C5AA0039403B /* CWAppDelegate.h */,
 				C38E481E1951C5AA0039403B /* CWAppDelegate.m */,
 				C38E48201951C5AA0039403B /* MainMenu.xib */,
@@ -132,24 +118,6 @@
 				C38E48171951C5AA0039403B /* main.m */,
 				C38E48191951C5AA0039403B /* Conway-Prefix.pch */,
 				C38E481A1951C5AA0039403B /* Credits.rtf */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C38E482F1951C5AA0039403B /* ConwayTests */ = {
-			isa = PBXGroup;
-			children = (
-				C38E48351951C5AA0039403B /* ConwayTests.m */,
-				C38E48301951C5AA0039403B /* Supporting Files */,
-			);
-			path = ConwayTests;
-			sourceTree = "<group>";
-		};
-		C38E48301951C5AA0039403B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C38E48311951C5AA0039403B /* ConwayTests-Info.plist */,
-				C38E48321951C5AA0039403B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -174,24 +142,6 @@
 			productReference = C38E48081951C5AA0039403B /* Conway.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C38E48281951C5AA0039403B /* ConwayTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C38E483C1951C5AA0039403B /* Build configuration list for PBXNativeTarget "ConwayTests" */;
-			buildPhases = (
-				C38E48251951C5AA0039403B /* Sources */,
-				C38E48261951C5AA0039403B /* Frameworks */,
-				C38E48271951C5AA0039403B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C38E482E1951C5AA0039403B /* PBXTargetDependency */,
-			);
-			name = ConwayTests;
-			productName = ConwayTests;
-			productReference = C38E48291951C5AA0039403B /* ConwayTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -201,11 +151,6 @@
 				CLASSPREFIX = CW;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Valery Meleshkin";
-				TargetAttributes = {
-					C38E48281951C5AA0039403B = {
-						TestTargetID = C38E48071951C5AA0039403B;
-					};
-				};
 			};
 			buildConfigurationList = C38E48031951C5AA0039403B /* Build configuration list for PBXProject "Conway" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -221,7 +166,6 @@
 			projectRoot = "";
 			targets = (
 				C38E48071951C5AA0039403B /* Conway */,
-				C38E48281951C5AA0039403B /* ConwayTests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,14 +182,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C38E48271951C5AA0039403B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C38E48341951C5AA0039403B /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -254,27 +190,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C38E481F1951C5AA0039403B /* CWAppDelegate.m in Sources */,
+				C38E48411951C63C0039403B /* CWCoord.m in Sources */,
 				C38E48181951C5AA0039403B /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C38E48251951C5AA0039403B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C38E48361951C5AA0039403B /* ConwayTests.m in Sources */,
+				C38E484919521A660039403B /* CWGridView.m in Sources */,
+				C38E48441951CA680039403B /* CWGrid.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C38E482E1951C5AA0039403B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C38E48071951C5AA0039403B /* Conway */;
-			targetProxy = C38E482D1951C5AA0039403B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C38E48141951C5AA0039403B /* InfoPlist.strings */ = {
@@ -299,14 +222,6 @@
 				C38E48211951C5AA0039403B /* Base */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		C38E48321951C5AA0039403B /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C38E48331951C5AA0039403B /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -408,46 +323,6 @@
 			};
 			name = Release;
 		};
-		C38E483D1951C5AA0039403B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Conway.app/Contents/MacOS/Conway";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Conway/Conway-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "ConwayTests/ConwayTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		C38E483E1951C5AA0039403B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Conway.app/Contents/MacOS/Conway";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Conway/Conway-Prefix.pch";
-				INFOPLIST_FILE = "ConwayTests/ConwayTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -467,14 +342,7 @@
 				C38E483B1951C5AA0039403B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		C38E483C1951C5AA0039403B /* Build configuration list for PBXNativeTarget "ConwayTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C38E483D1951C5AA0039403B /* Debug */,
-				C38E483E1951C5AA0039403B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
