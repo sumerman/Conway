@@ -25,6 +25,15 @@
     return self;
 }
 
+- (void)setZoom:(CGFloat)z {
+    if (z < 0.5f) {
+        zoom = 0.5f;
+    }
+    else {
+        zoom = z;
+    }
+}
+
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
@@ -63,11 +72,17 @@
 - (void)scrollWheel:(NSEvent *)e
 {
     COORD_INT i1 = i0, j1 = j0;
-    i1 += (COORD_INT)truncf([e deltaX]);
-    j1 -= (COORD_INT)truncf([e deltaY]);
+    i1 += (COORD_INT)truncf([e deltaX] * zoom);
+    j1 -= (COORD_INT)truncf([e deltaY] * zoom);
     if (i1 >= COORD_INT_MIN / 2 && i1 < COORD_INT_MAX / 2) i0 = i1;
     if (j1 >= COORD_INT_MIN / 2 && j1 < COORD_INT_MAX / 2) j0 = j1;
     
+    [self setNeedsDisplay:YES];
+}
+
+-(void)magnifyWithEvent:(NSEvent *)event
+{
+    self.zoom += [event magnification];
     [self setNeedsDisplay:YES];
 }
 
@@ -88,6 +103,14 @@
 - (void) mouseDragged:(NSEvent *)event
 {
     [self mouseDown:event];
+}
+
+- (IBAction) stepZoom:(id)sender {
+    if (![sender isKindOfClass:[NSSegmentedControl class]]) return;
+    NSSegmentedControl *segment = (NSSegmentedControl *)sender;
+    CGFloat sign = -1 * (segment.selectedSegment == 0) + (segment.selectedSegment == 1);
+    self.zoom += 0.5f*sign;
+    [self setNeedsDisplay:YES];
 }
 
 @end

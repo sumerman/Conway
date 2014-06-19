@@ -21,6 +21,8 @@
 @property (assign) IBOutlet id<CWGridViewProvider> gridProvider;
 @property (assign) COORD_INT i0;
 @property (assign) COORD_INT j0;
-@property (assign) CGFloat zoom;
+@property (assign, nonatomic) CGFloat zoom;
+
+- (IBAction) stepZoom:(id)sender;
 
 @end
