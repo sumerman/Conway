@@ -14,8 +14,7 @@
 		C38E481F1951C5AA0039403B /* CWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C38E481E1951C5AA0039403B /* CWAppDelegate.m */; };
 		C38E48221951C5AA0039403B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C38E48201951C5AA0039403B /* MainMenu.xib */; };
 		C38E48241951C5AA0039403B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38E48231951C5AA0039403B /* Images.xcassets */; };
-		C38E48411951C63C0039403B /* CWCoord.m in Sources */ = {isa = PBXBuildFile; fileRef = C38E48401951C63C0039403B /* CWCoord.m */; };
-		C38E48441951CA680039403B /* CWGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = C38E48431951CA680039403B /* CWGrid.m */; };
+		C38E48441951CA680039403B /* CWGrid.mm in Sources */ = {isa = PBXBuildFile; fileRef = C38E48431951CA680039403B /* CWGrid.mm */; };
 		C38E484919521A660039403B /* CWGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = C38E484819521A660039403B /* CWGridView.m */; };
 /* End PBXBuildFile section */
 
@@ -35,10 +34,8 @@
 		C38E48211951C5AA0039403B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C38E48231951C5AA0039403B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C38E482A1951C5AA0039403B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C38E483F1951C63C0039403B /* CWCoord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWCoord.h; sourceTree = "<group>"; };
-		C38E48401951C63C0039403B /* CWCoord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWCoord.m; sourceTree = "<group>"; };
 		C38E48421951CA680039403B /* CWGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWGrid.h; sourceTree = "<group>"; };
-		C38E48431951CA680039403B /* CWGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWGrid.m; sourceTree = "<group>"; };
+		C38E48431951CA680039403B /* CWGrid.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CWGrid.mm; sourceTree = "<group>"; };
 		C38E484719521A660039403B /* CWGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWGridView.h; sourceTree = "<group>"; };
 		C38E484819521A660039403B /* CWGridView.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = CWGridView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,10 +92,8 @@
 		C38E48111951C5AA0039403B /* Conway */ = {
 			isa = PBXGroup;
 			children = (
-				C38E483F1951C63C0039403B /* CWCoord.h */,
-				C38E48401951C63C0039403B /* CWCoord.m */,
 				C38E48421951CA680039403B /* CWGrid.h */,
-				C38E48431951CA680039403B /* CWGrid.m */,
+				C38E48431951CA680039403B /* CWGrid.mm */,
 				C38E484719521A660039403B /* CWGridView.h */,
 				C38E484819521A660039403B /* CWGridView.m */,
 				C38E481D1951C5AA0039403B /* CWAppDelegate.h */,
@@ -190,10 +185,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C38E481F1951C5AA0039403B /* CWAppDelegate.m in Sources */,
-				C38E48411951C63C0039403B /* CWCoord.m in Sources */,
 				C38E48181951C5AA0039403B /* main.m in Sources */,
 				C38E484919521A660039403B /* CWGridView.m in Sources */,
-				C38E48441951CA680039403B /* CWGrid.m in Sources */,
+				C38E48441951CA680039403B /* CWGrid.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

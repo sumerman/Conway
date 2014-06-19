@@ -7,7 +7,7 @@
 //
 
 #import "CWGridView.h"
-#include "math.h"
+#include <math.h>
 
 @implementation CWGridView
 
@@ -42,9 +42,8 @@
     [NSBezierPath fillRect:bounds];
     
     [fg set];
-    [[self.gridProvider grid] enumerateObjectsUsingBlock:^BOOL(CWCoord *c, BOOL val) {
+    [[self.gridProvider grid] enumerateObjectsUsingBlock:^BOOL(COORD_INT i, COORD_INT j, BOOL val) {
         if (val) {
-            COORD_INT i = c.i, j = c.j;
             NSRect cell = NSMakeRect((i + i0) * zoom, (j + j0) * zoom, zoom, zoom);
         
             if (NSContainsRect(bounds, cell) || NSIntersectsRect(bounds, cell)) {
@@ -66,8 +65,8 @@
     COORD_INT i1 = i0, j1 = j0;
     i1 += (COORD_INT)truncf([e deltaX]);
     j1 -= (COORD_INT)truncf([e deltaY]);
-    if (i1 >= [CWCoord min] / 2 && i1 < [CWCoord max] / 2) i0 = i1;
-    if (j1 >= [CWCoord min] / 2 && j1 < [CWCoord max] / 2) j0 = j1;
+    if (i1 >= COORD_INT_MIN / 2 && i1 < COORD_INT_MAX / 2) i0 = i1;
+    if (j1 >= COORD_INT_MIN / 2 && j1 < COORD_INT_MAX / 2) j0 = j1;
     
     [self setNeedsDisplay:YES];
 }

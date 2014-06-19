@@ -17,7 +17,7 @@
 {
     srandom((unsigned int)time(NULL));
     if (!grid) {
-        grid = [[CWGrid alloc] init];
+        grid = [CWGrid grid];
     }
     self.window.delegate = self;
     gridView.gridProvider = self;
@@ -67,13 +67,14 @@
 
 - (void)updateGrid
 {
-    [self.grid enumerateObjectsUsingBlock:^BOOL(CWCoord *c, BOOL val) {
+    [self.grid enumerateObjectsUsingBlock:^BOOL(COORD_INT i, COORD_INT j, BOOL val) {
         __block NSUInteger aliveNeighbours = 0;
-        [c enumerateNeighboursWithBlock:^(COORD_INT ni, COORD_INT nj) {
-            if ([self.grid atI:ni J:nj]) {
+        __block CWGrid *sgrid = self.grid;
+        CWEnumerateNeighbours(i, j, ^(COORD_INT ni, COORD_INT nj) {
+            if ([sgrid atI:ni J:nj]) {
                 ++aliveNeighbours;
             }
-        }];
+        });
         if (aliveNeighbours < 2) return NO;
         if (aliveNeighbours > 3) return NO;
         if (!val && aliveNeighbours == 3) return YES;
