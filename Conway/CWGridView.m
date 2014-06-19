@@ -18,8 +18,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         zoom = 4.0f;
-        i0 = frame.size.width / 2 / zoom;
-        j0 = frame.size.height / 2 / zoom;
+        i0 = 0;
+        j0 = 0;
         
     }
     return self;
@@ -69,18 +69,50 @@
     [theContext restoreGraphicsState];
 }
 
-- (void)scrollWheel:(NSEvent *)e
-{
+- (void) scrollDx:(CGFloat)dx Dy:(CGFloat)dy {
     COORD_INT i1 = i0, j1 = j0;
-    i1 += (COORD_INT)truncf([e deltaX] * zoom);
-    j1 -= (COORD_INT)truncf([e deltaY] * zoom);
+    i1 += (COORD_INT)truncf(dx * zoom);
+    j1 -= (COORD_INT)truncf(dy * zoom);
     if (i1 >= COORD_INT_MIN / 2 && i1 < COORD_INT_MAX / 2) i0 = i1;
     if (j1 >= COORD_INT_MIN / 2 && j1 < COORD_INT_MAX / 2) j0 = j1;
     
     [self setNeedsDisplay:YES];
 }
 
--(void)magnifyWithEvent:(NSEvent *)event
+- (BOOL)acceptsFirstResponder {
+    return YES;
+}
+
+- (void)keyDown:(NSEvent *)e
+{
+    NSString *arr = [e charactersIgnoringModifiers];
+    unichar keyChar = 0;
+    if ([arr length] == 0) {
+        [super keyDown:e];
+        return;
+    }
+    if ([arr length] == 1) {
+        keyChar = [arr characterAtIndex:0];
+        if (keyChar == NSLeftArrowFunctionKey) {
+            [self scrollDx:1.0f Dy:0.0f];
+        } else if (keyChar == NSRightArrowFunctionKey) {
+            [self scrollDx:-1.0f Dy:0.0f];
+        } else if (keyChar == NSUpArrowFunctionKey) {
+            [self scrollDx:0.0f Dy:1.0f];
+        } else if (keyChar == NSDownArrowFunctionKey) {
+            [self scrollDx:0.0f Dy:-1.0f];
+        } else {
+            [super keyDown:e];
+        }
+    }
+}
+
+- (void)scrollWheel:(NSEvent *)e
+{
+    [self scrollDx:[e deltaX] Dy:[e deltaY]];
+}
+
+- (void)magnifyWithEvent:(NSEvent *)event
 {
     self.zoom += [event magnification];
     [self setNeedsDisplay:YES];
@@ -106,9 +138,14 @@
 }
 
 - (IBAction) stepZoom:(id)sender {
-    if (![sender isKindOfClass:[NSSegmentedControl class]]) return;
-    NSSegmentedControl *segment = (NSSegmentedControl *)sender;
-    CGFloat sign = -1 * (segment.selectedSegment == 0) + (segment.selectedSegment == 1);
+    NSInteger tag = -1;
+    if ([sender isKindOfClass:[NSSegmentedControl class]]) {
+        NSSegmentedControl *segment = (NSSegmentedControl *)sender;
+        tag = segment.selectedSegment;
+    } else if ([sender respondsToSelector:@selector(tag)]) {
+        tag = [sender tag];
+    }
+    CGFloat sign = -1 * (tag == 0) + (tag > 0);
     self.zoom += 0.5f*sign;
     [self setNeedsDisplay:YES];
 }

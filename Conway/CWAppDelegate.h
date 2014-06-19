@@ -29,4 +29,7 @@
 - (IBAction)showSavePanel:(id)sender;
 - (IBAction)showOpenPanel:(id)sender;
 
+- (IBAction)faster:(id)sender;
+- (IBAction)slower:(id)sender;
+
 @end

@@ -118,6 +118,17 @@
                                     <action selector="performClick:" target="EbU-pO-UUJ" id="lEK-Jb-8pi"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="16Z-jG-3N9"/>
+                            <menuItem title="Faster" keyEquivalent="f" id="I8L-oC-7oM">
+                                <connections>
+                                    <action selector="faster:" target="Voe-Tx-rLC" id="Y3O-1D-WxL"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Slower" keyEquivalent="F" id="Bl2-Nz-bYI">
+                                <connections>
+                                    <action selector="slower:" target="Voe-Tx-rLC" id="E2E-Y4-PkZ"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -130,6 +141,18 @@
                                     <action selector="toggleFullScreen:" target="QvC-M9-y7g" id="CZH-tq-aVi"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="ONZ-ot-STL"/>
+                            <menuItem title="Zoom In" tag="1" keyEquivalent="+" id="nEI-Ub-U15" userLabel="Menu Item - Zoom In">
+                                <connections>
+                                    <action selector="stepZoom:" target="K5O-TR-CDk" id="EYt-n0-3FD"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Zoom Out" keyEquivalent="-" id="8H3-jR-HL2">
+                                <connections>
+                                    <action selector="stepZoom:" target="K5O-TR-CDk" id="Eto-3E-R1h"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="RRY-lv-9MP"/>
                             <menuItem title="Show Toolbar" keyEquivalent="t" id="jTq-14-Kny">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 <connections>

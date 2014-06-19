@@ -41,6 +41,8 @@
 }
 
 - (void)setUpdateInterval:(NSNumber *)anUpdateInterval {
+    if (anUpdateInterval.intValue < 1) return;
+    if (anUpdateInterval.intValue > 100) return;
     self->updateInterval = anUpdateInterval;
     if (_updTimer) {
         [self start:self];
@@ -94,6 +96,13 @@
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
     return YES;
+}
+
+- (IBAction)faster:(id)sender {
+    self.updateInterval = [NSNumber numberWithInt:self.updateInterval.intValue - 10];
+}
+- (IBAction)slower:(id)sender {
+    self.updateInterval = [NSNumber numberWithInt:self.updateInterval.intValue + 10];
 }
 
 - (IBAction)showSavePanel:(id)sender
