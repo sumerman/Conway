@@ -39,7 +39,7 @@
 }
 
 - (NSUInteger)hash {
-    return _i << sizeof(_i / 2) | _j;
+    return _i << sizeof(_i) / 2 | _j;
 }
 
 - (void)enumerateNeighboursWithBlock:(void (^)(COORD_INT ni, COORD_INT nj))block {
