@@ -66,7 +66,7 @@ void CWExecBlock(__unsafe_unretained CWCoord *c, BOOL val,
     return grid;
 }
 
-- (BOOL)atI:(COORD_INT)i J:(COORD_INT)j { //! usigned will warp coords on overflow
+- (BOOL)atI:(COORD_INT)i J:(COORD_INT)j { //! may wrap coords on overflow
     CWCoord *c = [[CWCoord alloc] initWithI:i J:j];
     if ([_coord2v objectForKey:c]) {
         return YES;
