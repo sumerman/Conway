@@ -89,18 +89,15 @@ void CWExecBlock(__unsafe_unretained CWCoord *c, BOOL val,
     @autoreleasepool {
         __block NSMutableArray *inserts = [NSMutableArray array];
         __block NSMutableArray *deletes = [NSMutableArray array];
-        __block NSMutableArray *neighbours = [NSMutableArray array];
         [_coord2v enumerateKeysAndObjectsUsingBlock:^(CWCoord *c, id obj, BOOL *stop) {
-            [c enumerateNeighboursWithBlock:^(COORD_INT i1, COORD_INT j1) {
-                if (![self atI:i1 J:j1]) {
-                    [neighbours addObject:[[CWCoord alloc] initWithI:i1 J:j1]];
-                }
-            }];
             BOOL val = obj != nil;
             CWExecBlock(c, val, inserts, deletes, block);
-        }];
-        [neighbours enumerateObjectsUsingBlock:^(CWCoord *c, NSUInteger idx, BOOL *stop) {
-            CWExecBlock(c, NO, inserts, deletes, block);
+            [c enumerateNeighboursWithBlock:^(COORD_INT i1, COORD_INT j1) {
+                if (![self atI:i1 J:j1]) {
+                    CWCoord *c1 = [[CWCoord alloc] initWithI:i1 J:j1];
+                    CWExecBlock(c1, NO, inserts, deletes, block);
+                }
+            }];
         }];
         __block NSMutableDictionary *coord2v = _coord2v;
         [deletes enumerateObjectsUsingBlock:^(CWCoord *c, NSUInteger idx, BOOL *stop) {
