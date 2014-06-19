@@ -40,7 +40,7 @@
 		C38E48421951CA680039403B /* CWGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWGrid.h; sourceTree = "<group>"; };
 		C38E48431951CA680039403B /* CWGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWGrid.m; sourceTree = "<group>"; };
 		C38E484719521A660039403B /* CWGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWGridView.h; sourceTree = "<group>"; };
-		C38E484819521A660039403B /* CWGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWGridView.m; sourceTree = "<group>"; };
+		C38E484819521A660039403B /* CWGridView.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = CWGridView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

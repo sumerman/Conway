@@ -47,7 +47,7 @@ void CWExecBlock(__unsafe_unretained CWCoord *c, BOOL val,
 
 - (NSData *)encode {
     NSUInteger sz = [_coord2v count] * sizeof(CWSerStruct);
-    NSMutableData *d = [NSMutableData dataWithCapacity:sz];
+    __block NSMutableData *d = [NSMutableData dataWithCapacity:sz];
     [self enumerateObjectsUsingBlock:^(CWCoord *c, BOOL val) {
         if (val) {
             CWSerStruct s = { .i = c.i, .j = c.j, .v = val };
@@ -87,9 +87,9 @@ void CWExecBlock(__unsafe_unretained CWCoord *c, BOOL val,
 
 - (void)enumerateObjectsUsingBlock:(CWGridUpdBlock)block {
     @autoreleasepool {
-        NSMutableArray *inserts = [NSMutableArray array];
-        NSMutableArray *deletes = [NSMutableArray array];
-        NSMutableArray *neighbours = [NSMutableArray array];
+        __block NSMutableArray *inserts = [NSMutableArray array];
+        __block NSMutableArray *deletes = [NSMutableArray array];
+        __block NSMutableArray *neighbours = [NSMutableArray array];
         [_coord2v enumerateKeysAndObjectsUsingBlock:^(CWCoord *c, id obj, BOOL *stop) {
             [c enumerateNeighboursWithBlock:^(COORD_INT i1, COORD_INT j1) {
                 if (![self atI:i1 J:j1]) {
@@ -102,11 +102,12 @@ void CWExecBlock(__unsafe_unretained CWCoord *c, BOOL val,
         [neighbours enumerateObjectsUsingBlock:^(CWCoord *c, NSUInteger idx, BOOL *stop) {
             CWExecBlock(c, NO, inserts, deletes, block);
         }];
+        __block NSMutableDictionary *coord2v = _coord2v;
         [deletes enumerateObjectsUsingBlock:^(CWCoord *c, NSUInteger idx, BOOL *stop) {
-            [_coord2v removeObjectForKey:c];
+            [coord2v removeObjectForKey:c];
         }];
         [inserts enumerateObjectsUsingBlock:^(CWCoord *c, NSUInteger idx, BOOL *stop) {
-            [_coord2v setObject:[NSNull null] forKey:c];
+            [coord2v setObject:[NSNull null] forKey:c];
         }];
     }
 }

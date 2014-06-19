@@ -31,8 +31,8 @@
     
     NSRect bounds = [self bounds];
     
-    NSColor *bg = [NSColor blackColor];
-    NSColor *fg = [NSColor whiteColor];
+    NSColor *bg = [NSColor whiteColor];
+    NSColor *fg = [NSColor blackColor];
     NSColor *ct = [NSColor redColor];
     
     NSGraphicsContext* theContext = [NSGraphicsContext currentContext];
