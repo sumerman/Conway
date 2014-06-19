@@ -49,8 +49,10 @@ void CWExecBlock(__unsafe_unretained CWCoord *c, BOOL val,
     NSUInteger sz = [_coord2v count] * sizeof(CWSerStruct);
     NSMutableData *d = [NSMutableData dataWithCapacity:sz];
     [self enumerateObjectsUsingBlock:^(CWCoord *c, BOOL val) {
-        CWSerStruct s = { .i = c.i, .j = c.j, .v = val };
-        [d appendBytes:&s length:sizeof(CWSerStruct)];
+        if (val) {
+            CWSerStruct s = { .i = c.i, .j = c.j, .v = val };
+            [d appendBytes:&s length:sizeof(CWSerStruct)];
+        }
         return val;
     }];
     return d;
