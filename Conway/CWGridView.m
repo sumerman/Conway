@@ -34,11 +34,19 @@
     }
 }
 
+- (NSAffineTransform *)centeringTransform {
+    NSRect bounds = self.bounds;
+    NSAffineTransform* xform = [NSAffineTransform transform];
+    [xform translateXBy:bounds.size.width / 2 yBy:bounds.size.height / 2];
+    
+    return xform;
+}
+
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
     
-    NSRect bounds = [self bounds];
+    NSRect bounds = self.bounds;
     
     NSColor *bg = [NSColor whiteColor];
     NSColor *fg = [NSColor blackColor];
@@ -50,12 +58,18 @@
     [bg set];
     [NSBezierPath fillRect:bounds];
     
+    NSAffineTransform* xform = [self centeringTransform];
+    [xform concat];
+    
     [fg set];
     [[self.gridProvider grid] enumerateObjectsUsingBlock:^BOOL(COORD_INT i, COORD_INT j, BOOL val) {
         if (val) {
             NSRect cell = NSMakeRect((i + i0) * zoom, (j + j0) * zoom, zoom, zoom);
+            NSRect clipCell = cell;
+            clipCell.origin = [xform transformPoint:clipCell.origin];
+            clipCell.size = [xform transformSize:clipCell.size];
         
-            if (NSContainsRect(bounds, cell) || NSIntersectsRect(bounds, cell)) {
+            if (NSContainsRect(bounds, clipCell) || NSIntersectsRect(bounds, clipCell)) {
                 [NSBezierPath fillRect:cell];
             }
         }
@@ -94,13 +108,13 @@
     if ([arr length] == 1) {
         keyChar = [arr characterAtIndex:0];
         if (keyChar == NSLeftArrowFunctionKey) {
-            [self scrollDx:1.0f Dy:0.0f];
+            [self scrollDx:5.0f/zoom Dy:0.0f];
         } else if (keyChar == NSRightArrowFunctionKey) {
-            [self scrollDx:-1.0f Dy:0.0f];
+            [self scrollDx:-5.0f/zoom Dy:0.0f];
         } else if (keyChar == NSUpArrowFunctionKey) {
-            [self scrollDx:0.0f Dy:1.0f];
+            [self scrollDx:0.0f Dy:5.0f/zoom];
         } else if (keyChar == NSDownArrowFunctionKey) {
-            [self scrollDx:0.0f Dy:-1.0f];
+            [self scrollDx:0.0f Dy:-5.0f/zoom];
         } else {
             [super keyDown:e];
         }
@@ -120,8 +134,10 @@
 
 - (void)mouseDown:(NSEvent *)event
 {
+    NSAffineTransform* xform = [self centeringTransform];
+    [xform invert];
     NSPoint p = [event locationInWindow];
-    NSPoint downPoint = [self convertPoint:p fromView:nil];
+    NSPoint downPoint = [xform transformPoint:[self convertPoint:p fromView:nil]];
     COORD_INT i = (COORD_INT)truncf(downPoint.x / zoom) - i0;
     COORD_INT j = (COORD_INT)truncf(downPoint.y / zoom) - j0;
     

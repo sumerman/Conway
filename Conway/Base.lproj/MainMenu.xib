@@ -137,6 +137,7 @@
                     <menu key="submenu" title="View" id="HyV-fh-RgO">
                         <items>
                             <menuItem title="Full Screen" keyEquivalent="f" id="snW-S8-Cw5">
+                                <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                 <connections>
                                     <action selector="toggleFullScreen:" target="QvC-M9-y7g" id="CZH-tq-aVi"/>
                                 </connections>
