@@ -13,7 +13,7 @@
 
 #define FILE_TYPE @"conway"
 
-@interface CWAppDelegate : NSObject <NSApplicationDelegate, CWGridViewProvider> {
+@interface CWAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, CWGridViewProvider> {
     @private
     NSTimer *_updTimer;
 }

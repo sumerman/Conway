@@ -19,6 +19,7 @@
     if (!grid) {
         grid = [[CWGrid alloc] init];
     }
+    self.window.delegate = self;
     gridView.gridProvider = self;
     [gridView setNeedsDisplay:YES];
 }
@@ -28,6 +29,14 @@
     if (!d) return NO;
     grid = [CWGrid gridWithData:d];
     return YES;
+}
+
+- (NSApplicationPresentationOptions)window:(NSWindow *)window willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions
+{
+    return (NSApplicationPresentationFullScreen |
+            NSApplicationPresentationHideDock |
+            NSApplicationPresentationAutoHideMenuBar |
+            NSApplicationPresentationAutoHideToolbar);
 }
 
 - (IBAction)start:(id)sender
