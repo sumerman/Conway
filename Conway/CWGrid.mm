@@ -67,7 +67,6 @@ void CWExecBlock(const CWCoordStruct &c,
 
 @interface CWGridImpl : NSObject {
     coords_hash *_coord2p;
-    NSMutableDictionary *_coord2v;
 }
 @end
 
@@ -125,7 +124,7 @@ void CWExecBlock(const CWCoordStruct &c,
 }
 
 - (NSData *)encode {
-    NSUInteger sz = [_coord2v count] * sizeof(CWCoordStruct);
+    NSUInteger sz = _coord2p->size();
     NSMutableData *d = [NSMutableData dataWithCapacity:sz];
     for (const CWCoordStruct &c : *_coord2p) {
         if (c.v) {
