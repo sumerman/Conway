@@ -105,6 +105,15 @@
     self.updateInterval = [NSNumber numberWithInt:self.updateInterval.intValue + 10];
 }
 
+- (IBAction)newRandom:(id)sender {
+    COORD_INT side = random() % 100;
+    for (COORD_INT i = -side; i < side; ++i)
+        for (COORD_INT j = -side; j < side; ++j) {
+            BOOL v = (random() % 10) > 7;
+            [self.grid set:v atI:i J:j];
+        }    
+}
+
 - (IBAction)showSavePanel:(id)sender
 {
     NSSavePanel * savePanel = [NSSavePanel savePanel];

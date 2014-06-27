@@ -73,6 +73,11 @@
                                     <action selector="performClick:" target="8JA-Yk-z2r" id="tY0-Wb-GC4"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="New Random" keyEquivalent="N" id="ahm-JI-QDp">
+                                <connections>
+                                    <action selector="newRandom:" target="Voe-Tx-rLC" id="WAm-E2-IND"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                 <connections>
                                     <action selector="showOpenPanel:" target="Voe-Tx-rLC" id="R32-XJ-tYx"/>
