@@ -9,6 +9,13 @@
 #import "CWAppDelegate.h"
 
 
+void CWFileAlert(NSString *msg) {
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = msg;
+    alert.alertStyle = NSWarningAlertStyle;
+    [alert runModal];
+}
+
 @implementation CWAppDelegate
 
 @synthesize grid, gridView, updateInterval;
@@ -21,6 +28,8 @@
     }
     self.updateInterval = [NSNumber numberWithInt:20];
     _updTimer = nil;
+    self.window.styleMask |= NSFullSizeContentViewWindowMask;
+    self.window.titleVisibility = NSWindowTitleHidden;
     self.window.delegate = self;
     [gridView setNeedsDisplay:YES];
 }
@@ -122,11 +131,7 @@
         if (result == NSFileHandlingPanelOKButton) {
             [savePanel orderOut:self];
             if (![[self.grid encode] writeToURL:savePanel.URL atomically:YES]) {
-                NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to save file"
-                                                 defaultButton:@"OK" alternateButton:nil
-                                                   otherButton:nil
-                                     informativeTextWithFormat:@"Unable to save file"];
-                [alert runModal];
+                CWFileAlert(@"Unable to save file");
             }
         }
     }];
@@ -142,11 +147,7 @@
             [openPanel orderOut:self];
             NSData *data = [NSData dataWithContentsOfURL:openPanel.URL];
             if (!data) {
-                NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to load file"
-                                                 defaultButton:@"OK" alternateButton:nil
-                                                   otherButton:nil
-                                     informativeTextWithFormat:@"Unable to load file"];
-                [alert runModal];
+                CWFileAlert(@"Unable to load file");
                 return;
             }
             Self.grid = [CWGrid gridWithData:data];

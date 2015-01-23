@@ -48,15 +48,11 @@
     
     NSRect bounds = self.bounds;
     
-    NSColor *bg = [NSColor whiteColor];
     NSColor *fg = [NSColor blackColor];
     NSColor *ct = [NSColor redColor];
     
     NSGraphicsContext* theContext = [NSGraphicsContext currentContext];
     [theContext saveGraphicsState];
-    
-    [bg set];
-    [NSBezierPath fillRect:bounds];
     
     NSAffineTransform* xform = [self centeringTransform];
     [xform concat];

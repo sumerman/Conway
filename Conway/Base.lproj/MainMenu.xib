@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C106a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -10,7 +10,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="CWAppDelegate">
             <connections>
                 <outlet property="gridView" destination="K5O-TR-CDk" id="45x-Vv-8Ra"/>
@@ -212,19 +212,20 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="UKx-5U-WAe">
+                        <rect key="frame" x="0.0" y="-9" width="491" height="408"/>
+                    </visualEffectView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="K5O-TR-CDk" customClass="CWGridView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="htr-iP-Woj">
                                 <rect key="frame" x="393" y="18" width="67" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="momentary" id="KdM-mf-KM7">
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="KdM-mf-KM7">
                                     <font key="font" metaFont="system"/>
                                     <segments>
                                         <segment image="NSRemoveTemplate" width="32" tag="-1">
@@ -250,9 +251,13 @@
                     </customView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="UKx-5U-WAe" firstAttribute="leading" secondItem="K5O-TR-CDk" secondAttribute="leading" id="2bj-pf-hmD"/>
                     <constraint firstItem="K5O-TR-CDk" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="BsR-sG-xDT"/>
                     <constraint firstItem="K5O-TR-CDk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="GDK-AC-ei6"/>
                     <constraint firstAttribute="bottom" secondItem="K5O-TR-CDk" secondAttribute="bottom" id="HsO-wo-auU"/>
+                    <constraint firstItem="UKx-5U-WAe" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="-39" id="Tir-RU-8SJ"/>
+                    <constraint firstAttribute="bottom" secondItem="UKx-5U-WAe" secondAttribute="bottom" constant="-9" id="bPL-jp-bN8"/>
+                    <constraint firstAttribute="trailing" secondItem="UKx-5U-WAe" secondAttribute="trailing" constant="-11" id="gly-zy-dkV"/>
                     <constraint firstAttribute="trailing" secondItem="K5O-TR-CDk" secondAttribute="trailing" id="ilY-MQ-yU8"/>
                 </constraints>
             </view>
@@ -324,7 +329,6 @@
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="kul-0g-Rf3"/>
-                    <toolbarItem reference="qHd-Jk-wrS"/>
                     <toolbarItem reference="S0y-mF-fck"/>
                     <toolbarItem reference="WSj-be-lGy"/>
                     <toolbarItem reference="hGh-w8-262"/>
@@ -334,10 +338,10 @@
         </window>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="8" height="8"/>
-        <image name="NSGoRightTemplate" width="9" height="9"/>
-        <image name="NSHomeTemplate" width="14" height="13"/>
-        <image name="NSRemoveTemplate" width="8" height="8"/>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSGoRightTemplate" width="9" height="12"/>
+        <image name="NSHomeTemplate" width="14" height="14"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSStopProgressTemplate" width="11" height="11"/>
     </resources>
 </document>
